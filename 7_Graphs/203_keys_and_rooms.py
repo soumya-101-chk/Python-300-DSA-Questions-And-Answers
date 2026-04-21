@@ -1,0 +1,21 @@
+"""
+203. Keys and Rooms
+
+Time Complexity: O(V + E)
+Space Complexity: O(V)
+"""
+from typing import List
+
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        visited = set([0])
+        stack = [0]
+        
+        while stack:
+            room = stack.pop()
+            for key in rooms[room]:
+                if key not in visited:
+                    visited.add(key)
+                    stack.append(key)
+                    
+        return len(visited) == len(rooms)

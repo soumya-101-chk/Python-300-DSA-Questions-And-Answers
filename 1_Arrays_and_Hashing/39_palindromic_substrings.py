@@ -1,0 +1,27 @@
+"""
+39. Palindromic Substrings
+
+Time Complexity: O(N^2)
+Space Complexity: O(1)
+"""
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        res = 0
+        
+        for i in range(len(s)):
+            # odd length palindromes
+            l = r = i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                res += 1
+                l -= 1
+                r += 1
+                
+            # even length palindromes
+            l = i
+            r = i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                res += 1
+                l -= 1
+                r += 1
+                
+        return res
